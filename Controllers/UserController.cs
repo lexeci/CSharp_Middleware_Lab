@@ -30,7 +30,7 @@ public class UsersController : ControllerBase
     {   
         if (!ModelState.IsValid)
         {
-            return BadRequest(ModelState); // Якщо модель не валідна, повертаємо помилку
+            return BadRequest(ModelState);
         }
 
         int newId = users.Keys.Any() ? users.Keys.Max() + 1 : 1;

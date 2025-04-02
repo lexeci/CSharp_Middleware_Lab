@@ -39,3 +39,4 @@
 /Users/lexeci/Code/Csharp_Projects/UserManagementAPI/obj/Debug/net9.0/UserManagementAPI.pdb
 /Users/lexeci/Code/Csharp_Projects/UserManagementAPI/obj/Debug/net9.0/UserManagementAPI.genruntimeconfig.cache
 /Users/lexeci/Code/Csharp_Projects/UserManagementAPI/obj/Debug/net9.0/ref/UserManagementAPI.dll
+/Users/lexeci/Code/Csharp_Projects/UserManagementAPI/obj/Debug/net9.0/UserManagementAPI.sourcelink.json

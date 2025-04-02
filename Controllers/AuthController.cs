@@ -21,7 +21,7 @@ public class AuthController : ControllerBase
     [HttpPost("login")]
     public IActionResult Login([FromBody] AdminUser user)
     {
-        if (user.Name == _config["JwtSettings:AdminLogin"] && user.Password == _config["JwtSettings:AdminPassword"]) // Потрібно адаптувати логіку для вашого користувача
+        if (user.Name == _config["JwtSettings:AdminLogin"] && user.Password == _config["JwtSettings:AdminPassword"])
         {
             var token = GenerateJwtToken(user.Name);
             return Ok(new { token });
@@ -35,15 +35,15 @@ public class AuthController : ControllerBase
         {
             new Claim(JwtRegisteredClaimNames.Sub, username),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-            new Claim(ClaimTypes.Role, "Admin") // Додано роль користувача
+            new Claim(ClaimTypes.Role, "Admin")
         };
 
-        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["JwtSettings:SecretKey"])); // Використання ключа з конфігурації
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["JwtSettings:SecretKey"]));
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
         var token = new JwtSecurityToken(
             claims: claims,
-            expires: DateTime.UtcNow.AddMinutes(30), // Використовуємо UTC час
+            expires: DateTime.UtcNow.AddMinutes(30),
             signingCredentials: creds);
 
         return new JwtSecurityTokenHandler().WriteToken(token);
@@ -53,5 +53,5 @@ public class AuthController : ControllerBase
 public class AdminUser
 {
     public string Name { get; set; }
-    public string Password { get; set; }  // Змінили на звичайну властивість
+    public string Password { get; set; }
 }
